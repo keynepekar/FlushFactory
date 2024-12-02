@@ -1,11 +1,20 @@
+import React, { useEffect, useState } from 'react';
+import { fetchFactoryInfo } from '../api';
+
 const Home = () => {
-    return (
-      <div>
-        <h2>Bienvenue dans l'usine FlushFactory</h2>
-        <p>Découvrez son fonctionnement et ses réacteurs.</p>
-      </div>
-    );
-  };
-  
-  export default Home;
-  
+  const [factory, setFactory] = useState(null);
+
+  useEffect(() => {
+    fetchFactoryInfo().then(data => setFactory(data));
+  }, []);
+
+  return (
+    <div>
+      <h2>Bienvenue dans l'usine {factory?.name}</h2>
+      <p>{factory?.description}</p>
+      <p>Localisation : {factory?.location}</p>
+    </div>
+  );
+};
+
+export default Home;
