@@ -25,17 +25,33 @@ app.get('/api/factory', (req, res) => {
   // Route for reactors status
   app.get('/api/reactors', (req, res) => {
     res.json([
-      { id: 1, name: 'Réacteur A', status: 'Actif' },
-      { id: 2, name: 'Réacteur B', status: 'Inactif' },
-      { id: 3, name: 'Réacteur C', status: 'En maintenance' },
+      { id: 1, name: 'Réacteur A', status: 'Actif', position: [48.8566, 2.3522] },          // Paris
+      { id: 2, name: 'Réacteur B', status: 'Inactif', position: [45.764, 4.8357] },         // Lyon
+      { id: 3, name: 'Réacteur C', status: 'En maintenance', position: [43.6047, 1.4442] }, // Toulouse
     ]);
   });
 
   // Route for the quiz
   app.get('/api/quiz', (req, res) => {
     res.json([
-      { question: 'Où se situe FlushFactory ?', answer: 'Valenciennes' },
-      { question: 'Combien de réacteurs sont actifs ?', answer: '1' },
+        {
+            id: 1,
+            question: 'Où se situent les locaux de FlushFactory ?',
+            options: ['Valenciennes', 'Paris', 'Lyon', 'Saint-Lô'],
+            answer: 'France',
+          },
+          {
+            id: 2,
+            question: 'Combien de réacteurs sont actifs ?',
+            options: ['1', '2', '3', '42'],
+            answer: '1',
+          },
+          {
+            id: 3,
+            question: 'Quel réacteur est en maintenance ?',
+            options: ['Réacteur A', 'Réacteur B', 'Réacteur C', 'Réacteur D'],
+            answer: 'Réacteur C',
+          },
     ]);
   });
 
