@@ -21,3 +21,34 @@
     }
   }
   
+  .quiz-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #0056b3;
+    }
+
+    &.correct,
+    &.wrong {
+      pointer-events: none; // on vire le hover si cliqué
+    }
+  
+    &.correct {
+      background-color: #28a745;
+      transform: scale(1.1);
+    }
+  
+    &.wrong {
+      background-color: #dc3545;
+      transform: scale(0.9);
+    }
+  }
+  

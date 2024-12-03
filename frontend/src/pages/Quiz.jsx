@@ -8,6 +8,7 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [timeLeft, setTimeLeft] = useState(10); // 10s
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   useEffect(() => {
     fetchQuizQuestions().then(data => setQuestions(data));
@@ -23,11 +24,17 @@ const Quiz = () => {
   }, [timeLeft, showScore]);
 
   const handleAnswer = (selectedOption) => {
+    setSelectedAnswer(selectedOption);
+
     const currentQuestion = questions[currentQuestionIndex];
     if (selectedOption === currentQuestion.answer) {
       setScore(score + 1);
     }
-    handleNextQuestion();
+
+    setTimeout(() => {
+      setSelectedAnswer(null); // reset après animation
+      handleNextQuestion();
+    }, 1000);
   };
 
   const handleNextQuestion = () => {
@@ -47,12 +54,25 @@ const Quiz = () => {
     setTimeLeft(10);
   };
 
+  const getFinalMessage = () => {
+    const scorePercentage = (score / questions.length) * 100; // gestion en % si ajout questions
+  
+    if (scorePercentage === 100) {
+      return '🥳 Vamos !';
+    } else if (scorePercentage >= 50) {
+      return '🤠 Pas mal bg !';
+    } else {
+      return '🫠 Bon.';
+    }
+  };
+
   return (
     <div className="quiz-container">
       {showScore ? (
         <div>
           <h2>Quiz terminé !</h2>
           <p>Votre score : {score} / {questions.length}</p>
+          <p>{getFinalMessage()}</p>
           <button onClick={resetQuiz}>Rejouer</button>
         </div>
       ) : questions.length > 0 ? (
@@ -65,7 +85,7 @@ const Quiz = () => {
             <button
               key={option}
               onClick={() => handleAnswer(option)}
-              style={{ margin: '5px', padding: '10px', cursor: 'pointer' }}
+              className={`quiz-button ${selectedAnswer === option ? (option === questions[currentQuestionIndex].answer ? 'correct' : 'wrong') : ''}`}
             >
               {option}
             </button>

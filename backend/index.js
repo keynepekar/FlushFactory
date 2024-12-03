@@ -38,7 +38,7 @@ app.get('/api/factory', (req, res) => {
             id: 1,
             question: 'Où se situent les locaux de FlushFactory ?',
             options: ['Valenciennes', 'Paris', 'Lyon', 'Saint-Lô'],
-            answer: 'France',
+            answer: 'Valenciennes',
           },
           {
             id: 2,
