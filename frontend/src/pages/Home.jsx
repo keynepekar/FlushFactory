@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchFactoryInfo } from '../api';
 import '../styles/Home.scss';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
   const [factory, setFactory] = useState(null);
@@ -12,6 +13,10 @@ const Home = () => {
   return (
     <div className="home-container">
       <header className="home-header">
+        <Helmet>
+          <title>Accueil | FlushFactory</title>
+          <meta name="description" content="Découvrez FlushFactory : l'usine du futur." />
+        </Helmet>
         <h1>Bienvenue à {factory?.name}</h1>
         <p className="home-description">{factory?.description}</p>
         <p className="home-location">📍 Localisation : {factory?.location}</p>

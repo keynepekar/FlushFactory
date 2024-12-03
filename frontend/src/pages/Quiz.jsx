@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchQuizQuestions } from '../api';
 import '../styles/Quiz.scss';
+import { Helmet } from 'react-helmet';
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -68,6 +69,11 @@ const Quiz = () => {
 
   return (
     <div className="quiz-container">
+      <Helmet>
+        <title>Quiz | FlushFactory</title>
+        <meta name="description" content="Testez vos connaissances sur FlushFactory." />
+      </Helmet>
+
       {showScore ? (
         <div>
           <h2>Quiz terminé !</h2>

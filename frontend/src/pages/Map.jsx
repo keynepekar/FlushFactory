@@ -4,6 +4,7 @@ import L from 'leaflet';
 import { fetchReactors } from '../api';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import { Helmet } from 'react-helmet';
 
 const DefaultIcon = L.icon({
   iconUrl: markerIcon,
@@ -21,24 +22,30 @@ const Map = () => {
   }, []);
 
   return (
-    <MapContainer 
-      center={[46.6034, 1.8883]} 
-      zoom={6} 
-      className="map-container"
-      maxBounds={[
-        [40, -10],
-        [52, 10],
-      ]}>
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      />
-      {reactors.map(reactor => (
-        <Marker key={reactor.id} position={reactor.position}>
-          <Popup>{reactor.name}</Popup>
-        </Marker>
-      ))}
-    </MapContainer>
+    <>
+      <Helmet>
+        <title>Carte | FlushFactory</title>
+        <meta name="description" content="Carte interactive des réacteurs." />
+      </Helmet>
+      <MapContainer 
+        center={[46.6034, 1.8883]} 
+        zoom={6} 
+        className="map-container"
+        maxBounds={[
+          [40, -10],
+          [52, 10],
+        ]}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        />
+        {reactors.map(reactor => (
+          <Marker key={reactor.id} position={reactor.position}>
+            <Popup>{reactor.name}</Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+    </>
   );
 };
 
