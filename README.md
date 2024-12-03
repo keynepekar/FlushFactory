@@ -6,12 +6,13 @@ Venez découvrir les rouages de FlushFactory ! Il s'agit d'un petit projet web i
 - 🏭 Présentation de l'usine.
 - 🗺️ Carte interactive position des réacteurs.
 - ❓ Quiz pour tester ses connaissances.
+- 🌙 Mode clair/sombre pour votre plus grand confort !
 
 ## 🛠️ Technologies
-- ⚛️ **React** avec **Vite** pour le frontend.
+- ⚛️ **React** et **Vite** pour le frontend.
 - 🌐 **Node.js** avec **Express** pour le backend.
 - 🎨 **SCSS** pour les styles.
-- 🗺️ **React-Leaflet** pour la carte.
+- 🗺️ **React-Leaflet** pour la gestion de la carte interactive (fonctionne pas trop).
 
 ## 🏃‍♂️ Lancer le projet
 1. Clonez ce repository :
@@ -36,3 +37,6 @@ Venez découvrir les rouages de FlushFactory ! Il s'agit d'un petit projet web i
 4. Ouvrez :
    - Frontend : http://localhost:5173
    - Backend : http://localhost:5000
+
+## 📜 Licence
+Ce projet est sous licence [![MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/).
